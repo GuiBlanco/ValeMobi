@@ -1,0 +1,23 @@
+create database testback;
+
+create table if not exists tb_customer_account(
+id_customer double not null primary key ,
+cpf_cnpj char(14) not null,
+nm_customer nvarchar(255) not null,
+is_active boolean not null,
+vl_total long not null
+);
+
+
+
+drop table tb_customer_account;
+
+select * from tb_customer_account;
+
+select SUM(Case when  vl_total > 500 and ( id_customer between 1500 and 2700) then vl_total Else 0 End)/SUM(Case when  vl_total > 500 and ( id_customer between 1500 and 2700) then 1 Else 0 End) from tb_customer_account  ;
+
+select SUM(Case when  vl_total > 500 and ( id_customer between 1500 and 2700) then vl_total Else 0 End)/SUM(Case when  vl_total > 500 and ( id_customer between 1500 and 2700) then 1 Else 0 End) from tb_customer_account  ;
+
+select * from tb_customer_account where  vl_total > 500 and ( id_customer between 1500 and 2700) order by vl_total desc;
+
+Select avg(vl_total) from tb_customer_account where vl_total>500 and id_customer between 1500 and 2700;
